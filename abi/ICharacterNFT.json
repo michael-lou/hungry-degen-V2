@@ -1,0 +1,605 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "coreId",
+        "type": "uint256"
+      }
+    ],
+    "name": "equipCore",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "flexId",
+        "type": "uint256"
+      }
+    ],
+    "name": "equipFlex",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCharacterInfo",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "character",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "rarity",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "level",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "exp",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint8",
+                "name": "characterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "rarity",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "level",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "wear",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "part",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "set",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes",
+                "name": "attributes",
+                "type": "bytes"
+              },
+              {
+                "internalType": "string",
+                "name": "metadataUri",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct ICoreNFT.Core[]",
+            "name": "accessories",
+            "type": "tuple[]"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint8",
+                "name": "characterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "rarity",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "level",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "wear",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "part",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "set",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes",
+                "name": "attributes",
+                "type": "bytes"
+              },
+              {
+                "internalType": "string",
+                "name": "metadataUri",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct IFlexNFT.Flex[]",
+            "name": "flexes",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "bytes",
+            "name": "attributes",
+            "type": "bytes"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataUri",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct ICharacterNFT.Character",
+        "name": "",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "characterType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "rarity",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "level",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "wear",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "part",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "set",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes",
+            "name": "attributes",
+            "type": "bytes"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataUri",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct ICoreNFT.Core[]",
+        "name": "",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "characterType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "rarity",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "level",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "wear",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "part",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "set",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes",
+            "name": "attributes",
+            "type": "bytes"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataUri",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct IFlexNFT.Flex[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCharacterType",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getEquippedAccessories",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getEquippedFlexes",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getExp",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getLevel",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "getOwnedTokens",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRarity",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "character",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "rarity",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes",
+        "name": "attributes",
+        "type": "bytes"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataUri",
+        "type": "string"
+      }
+    ],
+    "name": "mint",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "openedBoxes",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "ownerOf",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "safeTransferFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "coreId",
+        "type": "uint256"
+      }
+    ],
+    "name": "unequipCore",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "flexId",
+        "type": "uint256"
+      }
+    ],
+    "name": "unequipFlex",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "newLevel",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "newExp",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateLevelAndExp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

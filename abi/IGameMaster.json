@@ -1,0 +1,174 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "authorizedContracts",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "characterId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "coreIds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "flexIds",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "batchUnequip",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "characterId",
+        "type": "uint256"
+      }
+    ],
+    "name": "calculateCharacterWeight",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId1",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId2",
+        "type": "uint256"
+      }
+    ],
+    "name": "composeCore",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId1",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId2",
+        "type": "uint256"
+      }
+    ],
+    "name": "composeFlex",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "characterId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "foodId",
+        "type": "uint256"
+      }
+    ],
+    "name": "feedCharacter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "coreId",
+        "type": "uint256"
+      }
+    ],
+    "name": "repairCore",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "flexId",
+        "type": "uint256"
+      }
+    ],
+    "name": "repairFlex",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "characterId",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateAccumulatorAndRewardDebt",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "oldWeight",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "newWeight",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateTotalWeight",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

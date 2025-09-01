@@ -1,0 +1,15 @@
+{
+  "address": "0xde48d61024F632D9E98032cEbF4FD9d2A5d7460f",
+  "deployedAt": "2025-09-01T19:19:26.221Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [
+    "0xab4B3af01F7784F1Eba6DD89Eb1E5af2FA0D5114",
+    "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B"
+  ],
+  "config": {
+    "initialFoodPrice": "500000000000000"
+  },
+  "description": "Food Marketplace contract with NFT integration"
+}

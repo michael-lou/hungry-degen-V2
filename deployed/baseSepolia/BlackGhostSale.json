@@ -1,0 +1,15 @@
+{
+  "address": "0x47bD5dB6f8b9Aea196dd61c8C5F522872875023b",
+  "deployedAt": "2025-09-01T18:46:36.586Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [
+    "0x84ffE53bb622cBe8DF9a052d688e1A9eDd9209e5",
+    "https://storage.googleapis.com/hungrydegens/metadata/basic_ghost_1.json",
+    "3000000000000000",
+    1000000,
+    "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+    1767139200
+  ]
+}

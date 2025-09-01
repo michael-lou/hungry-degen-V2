@@ -1,0 +1,395 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
+      }
+    ],
+    "name": "PlayerRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      }
+    ],
+    "name": "ReferralRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "dustAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "goldDXPAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "silverDXPAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "RewardsClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "enum IReferralV2.ProductType",
+        "name": "productType",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "dustAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "goldDXPAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "silverDXPAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "RewardsDistributed",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "checkIsPlayer",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "isPlayer",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "claimRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getClaimableRewards",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "ethAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "dustAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "goldDXPAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "silverDXPAmount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      }
+    ],
+    "name": "getReferralCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "count",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getReferrer",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getUserReferralSummary",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "totalReferrals",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalETHEarned",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalDUSTEarned",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "referrer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ethFromCharacterNFT",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ethFromBlackGhostNFT",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ethFromFoodPacks",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ethFromFlexPacks",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "dustFromCorePacks",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "dustFromFlexPackDust",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "goldDXPEarned",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "silverDXPEarned",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "goldDXPBalance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "silverDXPBalance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isWhitelisted",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nftCommissionRate",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IReferralV2.UserReferralSummary",
+        "name": "summary",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "isWhitelisted",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "isWhitelisted",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "commissionRate",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      },
+      {
+        "internalType": "enum IReferralV2.ProductType",
+        "name": "productType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "recordSaleAndDistributeRewards",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "success",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      }
+    ],
+    "name": "registerReferral",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
