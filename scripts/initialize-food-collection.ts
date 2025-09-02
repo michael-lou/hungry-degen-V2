@@ -123,6 +123,46 @@ async function main() {
       }
     }
 
+    // 设置FoodNFT的URI
+    console.log('\n🔧 设置FoodNFT URI...');
+    const newURI = "https://storage.googleapis.com/hungrydegens/foodsMetadata/{id}.json";
+    
+    try {
+      // 检查当前URI
+      try {
+        const currentURI = await foodNFT.uri(1); // 用任意ID测试当前URI
+        console.log(`📋 当前URI: ${currentURI}`);
+      } catch (error) {
+        console.log('📋 无法获取当前URI');
+      }
+
+      console.log(`🔧 设置新的URI: ${newURI}`);
+      
+      // 设置新URI
+      const uriTx = await foodNFT.setURI(newURI);
+      console.log(`URI设置交易已发送: ${uriTx.hash}`);
+      
+      await uriTx.wait();
+      console.log(`✅ URI设置完成`);
+
+      // 验证URI设置
+      const verifyURI = await foodNFT.uri(1);
+      if (verifyURI === newURI) {
+        console.log(`✅ URI验证成功`);
+      } else {
+        console.log(`❌ URI验证失败: ${verifyURI}`);
+      }
+
+      console.log('\n📝 URI设置说明:');
+      console.log('1. 合约URI包含{id}占位符，客户端会自动替换');
+      console.log('2. 例如Token 1的实际URI: https://storage.googleapis.com/hungrydegens/foodsMetadata/1.json');
+      console.log('3. 确保Google Cloud Storage中有对应的JSON元数据文件');
+
+    } catch (uriError) {
+      console.error('❌ URI设置失败:', uriError);
+      // URI设置失败不影响整体初始化
+    }
+
   } catch (error) {
     console.error('❌ 初始化过程中发生错误:', error);
     throw error;

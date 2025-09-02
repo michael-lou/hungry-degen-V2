@@ -35,8 +35,8 @@ async function main() {
     });
 
     console.log('\n✅ FoodNFT 部署完成!');
-    console.log(`   ⏸️ 暂停1秒以避免网络拥堵...`);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log(`   ⏸️ 暂停3秒以避免网络拥堵...`);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     // 第二步：部署 FoodMarketplace
     console.log('\n🚀 步骤2: 部署 FoodMarketplace...');

@@ -71,7 +71,7 @@ async function main() {
     const saleConfig = {
       metadataUri: 'https://storage.googleapis.com/hungrydegens/metadata/basic_ghost_1.json',
       price: ethers.parseEther('0.003'), // 正价 0.003 ETH
-      maxSupply: 1000000, // 最大供应量 1000000
+      maxSupply: ethers.MaxUint256, // 最大供应量设置为uint256最大值
       treasuryAddress: treasury, // 资金接收地址
       phase2StartTime: Math.floor(new Date('2025-12-31').getTime() / 1000), // 2025-12-31
     };
@@ -125,6 +125,27 @@ async function main() {
       console.log('✅ BlackGhostSale 已经有 BlackGhostNFT 铸造权限');
     }
 
+    console.log('\n🔧 配置早鸟阶段...');
+    
+    // 启动早鸟阶段并设置折扣配置
+    const characterHolderDiscount = 0; // 角色持有者折扣 0% (以基点为单位，10000 = 100%)
+    const generalEarlyDiscount = 0;    // 一般早期折扣 0% (以基点为单位，10000 = 100%)
+    
+    console.log(`设置折扣配置:`);
+    console.log(`- 角色持有者折扣: ${characterHolderDiscount / 100}%`);
+    console.log(`- 一般早期折扣: ${generalEarlyDiscount / 100}%`);
+    
+    const BlackGhostSale = await ethers.getContractFactory('BlackGhostSale');
+    const blackGhostSaleContract = BlackGhostSale.attach(blackGhostSaleAddress) as any;
+
+    // 使用updateDiscountConfig方法设置折扣
+    const updateDiscountTx = await blackGhostSaleContract.updateDiscountConfig(
+      characterHolderDiscount,
+      generalEarlyDiscount
+    );
+    await updateDiscountTx.wait();
+    console.log(`✅ 折扣配置已更新`);
+
     // 保存合约地址
     addressManager.saveContractAddress(networkName, 'BlackGhostSale', blackGhostSaleAddress, {
       deployer: deployer.address,
@@ -134,7 +155,7 @@ async function main() {
         blackGhostNFTAddress,
         saleConfig.metadataUri,
         saleConfig.price.toString(),
-        saleConfig.maxSupply,
+        saleConfig.maxSupply.toString(), // 将BigInt转换为字符串
         saleConfig.treasuryAddress,
         saleConfig.phase2StartTime,
       ],
