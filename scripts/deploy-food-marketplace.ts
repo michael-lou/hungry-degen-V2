@@ -10,7 +10,7 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log(`部署者地址: ${deployer.address}`);
 
-  const treasury = deployer.address;
+  const treasury = '0x888Ce07575185Fe5b148b368634b12B0813e92e7';//deployer.address;
   console.log(`财政金库地址: ${treasury}`);
 
   try {

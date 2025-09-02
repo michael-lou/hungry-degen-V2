@@ -10,7 +10,7 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log(`部署者地址: ${deployer.address}`);
 
-  const treasury = deployer.address;
+  const treasury = '0x888Ce07575185Fe5b148b368634b12B0813e92e7'; //deployer.address;
   console.log(`财政金库地址: ${treasury}`);
 
   try {
@@ -47,7 +47,6 @@ async function main() {
     console.log(`网络: ${networkName}`);
     console.log(`部署者: ${deployer.address}`);
     console.log(`BlackGhostNFT: ${blackGhostNFTAddress}`);
-
   } catch (error) {
     console.error('❌ 部署过程中发生错误:', error);
     throw error;
@@ -103,8 +102,8 @@ async function main() {
 
     await blackGhostSale.waitForDeployment();
 
-    console.log(`   ⏸️ 暂停1秒以避免网络拥堵...`);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log(`   ⏸️ 暂停3秒以避免网络拥堵...`);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const blackGhostSaleAddress = await blackGhostSale.getAddress();
     console.log(`✅ BlackGhostSale 已部署 (可升级): ${blackGhostSaleAddress}`);
@@ -126,15 +125,17 @@ async function main() {
     }
 
     console.log('\n🔧 配置早鸟阶段...');
-    
+
     // 启动早鸟阶段并设置折扣配置
+    console.log(`   ⏸️ 暂停3秒以避免网络拥堵...`);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const characterHolderDiscount = 0; // 角色持有者折扣 0% (以基点为单位，10000 = 100%)
-    const generalEarlyDiscount = 0;    // 一般早期折扣 0% (以基点为单位，10000 = 100%)
-    
+    const generalEarlyDiscount = 0; // 一般早期折扣 0% (以基点为单位，10000 = 100%)
+
     console.log(`设置折扣配置:`);
     console.log(`- 角色持有者折扣: ${characterHolderDiscount / 100}%`);
     console.log(`- 一般早期折扣: ${generalEarlyDiscount / 100}%`);
-    
+
     const BlackGhostSale = await ethers.getContractFactory('BlackGhostSale');
     const blackGhostSaleContract = BlackGhostSale.attach(blackGhostSaleAddress) as any;
 

@@ -8,13 +8,13 @@ import { ContractAddressManager } from './utils/ContractAddressManager';
 
 // 稀有度映射
 const RARITY_MAP: { [key: string]: number } = {
-  'F': 1,
-  'N': 2,    // Normal (普通)
-  'C': 3,    // Common (常见)
-  'R': 4,    // Rare (稀有)
-  'RR': 5,   // Very Rare (非常稀有)
-  'SR': 6,   // Super Rare (超稀有)
-  'SSR': 7,  // Super Super Rare (超超稀有)
+  F: 1,
+  N: 2, // Normal (普通)
+  C: 3, // Common (常见)
+  R: 4, // Rare (稀有)
+  RR: 5, // Very Rare (非常稀有)
+  SR: 6, // Super Rare (超稀有)
+  SSR: 7, // Super Super Rare (超超稀有)
 };
 
 async function main() {
@@ -65,7 +65,7 @@ async function main() {
         // 检查是否已经初始化
         try {
           const existingName = await foodNFT.getName(tokenId);
-          if (existingName && existingName !== "") {
+          if (existingName && existingName !== '') {
             console.log(`⏭️ Token ${tokenId} (${name}) 已初始化，跳过`);
             skipCount++;
             continue;
@@ -77,26 +77,18 @@ async function main() {
         console.log(`🍽️ 初始化 Token ${tokenId}: ${name}`);
         console.log(`   稀有度: ${food.Rarity} (${rarity}), 价值: ${food.Value} ETH, 经验: ${food.Exp}`);
 
-        const tx = await foodNFT.initializeCollection(
-          tokenId,
-          rarity,
-          name,
-          value,
-          exp
-        );
+        const tx = await foodNFT.initializeCollection(tokenId, rarity, name, value, exp);
         await tx.wait();
 
         console.log(`✅ Token ${tokenId} 初始化成功`);
         successCount++;
-
       } catch (error) {
         console.log(`❌ Token ${tokenId} 初始化失败:`, error);
         errorCount++;
       }
 
-
       console.log(`\n--- 已处理 ${i + 1}/${foodMetadata.length} 个食物 ---\n`);
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
     }
 
     console.log('\n✅ 食物NFT集合初始化完成!');
@@ -109,24 +101,28 @@ async function main() {
     // 验证几个示例食物
     console.log('\n🔍 验证示例食物:');
     const sampleIds = [1, 15, 42, 58]; // 随机选择几个ID验证
-    
+
     for (const tokenId of sampleIds) {
       try {
         const name = await foodNFT.getName(tokenId);
         const rarity = await foodNFT.getRarity(tokenId);
         const value = await foodNFT.getValue(tokenId);
         const exp = await foodNFT.getExp(tokenId);
-        
-        console.log(`✅ Token ${tokenId}: ${name}, 稀有度: ${rarity}, 价值: ${ethers.formatEther(value)} ETH, 经验: ${ethers.formatEther(exp)}`);
+
+        console.log(
+          `✅ Token ${tokenId}: ${name}, 稀有度: ${rarity}, 价值: ${ethers.formatEther(value)} ETH, 经验: ${ethers.formatEther(exp)}`
+        );
       } catch (error) {
         console.log(`❌ Token ${tokenId} 验证失败`);
       }
     }
 
     // 设置FoodNFT的URI
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
     console.log('\n🔧 设置FoodNFT URI...');
-    const newURI = "https://storage.googleapis.com/hungrydegens/foodsMetadata/{id}.json";
-    
+    const newURI = 'https://storage.googleapis.com/hungrydegens/foodsMetadata/{id}.json';
+
     try {
       // 检查当前URI
       try {
@@ -137,32 +133,18 @@ async function main() {
       }
 
       console.log(`🔧 设置新的URI: ${newURI}`);
-      
+
       // 设置新URI
       const uriTx = await foodNFT.setURI(newURI);
       console.log(`URI设置交易已发送: ${uriTx.hash}`);
-      
+
       await uriTx.wait();
       console.log(`✅ URI设置完成`);
-
-      // 验证URI设置
-      const verifyURI = await foodNFT.uri(1);
-      if (verifyURI === newURI) {
-        console.log(`✅ URI验证成功`);
-      } else {
-        console.log(`❌ URI验证失败: ${verifyURI}`);
-      }
-
-      console.log('\n📝 URI设置说明:');
-      console.log('1. 合约URI包含{id}占位符，客户端会自动替换');
-      console.log('2. 例如Token 1的实际URI: https://storage.googleapis.com/hungrydegens/foodsMetadata/1.json');
-      console.log('3. 确保Google Cloud Storage中有对应的JSON元数据文件');
 
     } catch (uriError) {
       console.error('❌ URI设置失败:', uriError);
       // URI设置失败不影响整体初始化
     }
-
   } catch (error) {
     console.error('❌ 初始化过程中发生错误:', error);
     throw error;
