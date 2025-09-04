@@ -174,11 +174,13 @@ contract BlackGhostSale is
         emit BlackGhostPurchased(msg.sender, tokenIds, totalPrice, SalePhase.EARLY_BIRD);
 
         // 将支付金额发送到 treasury
-        payable(treasury).transfer(totalPrice);
+        (bool success, ) = payable(treasury).call{ value: totalPrice }("");
+        require(success, "BlackGhostSale: Treasury transfer failed");
 
         // 退还多余的 ETH
         if (msg.value > totalPrice) {
-            payable(msg.sender).transfer(msg.value - totalPrice);
+            (bool refundSuccess, ) = payable(msg.sender).call{ value: msg.value - totalPrice }("");
+            require(refundSuccess, "BlackGhostSale: ETH refund failed");
         }
     }
 
@@ -236,11 +238,13 @@ contract BlackGhostSale is
         emit BlackGhostPurchased(msg.sender, tokenIds, totalPrice, SalePhase.PUBLIC_SALE);
 
         // 将支付金额发送到 treasury
-        payable(treasury).transfer(totalPrice);
+        (bool success, ) = payable(treasury).call{ value: totalPrice }("");
+        require(success, "BlackGhostSale: Treasury transfer failed");
 
         // 退还多余的 ETH
         if (msg.value > totalPrice) {
-            payable(msg.sender).transfer(msg.value - totalPrice);
+            (bool refundSuccess, ) = payable(msg.sender).call{ value: msg.value - totalPrice }("");
+            require(refundSuccess, "BlackGhostSale: ETH refund failed");
         }
     }
 
@@ -403,7 +407,7 @@ contract BlackGhostSale is
         currentSupply += quantity;
 
         for (uint256 i = 0; i < quantity; i++) {
-            uint256 tokenId = blackGhostNFT.mint(
+            blackGhostNFT.mint(
                 to,
                 BLACK_GHOST_CHARACTER_TYPE,
                 BLACK_GHOST_RARITY,

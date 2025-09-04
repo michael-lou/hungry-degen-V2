@@ -1,6 +1,6 @@
 {
-  "address": "0x3096Ca8e1587854262247e982a40BBa5b99325e7",
-  "deployedAt": "2025-09-02T04:22:33.963Z",
+  "address": "0xb83f65fF09FCb62813287BD4130F016914baEE16",
+  "deployedAt": "2025-09-04T07:01:46.933Z",
   "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
   "deploymentMode": "upgradeable",
   "proxyType": "UUPS",
@@ -11,5 +11,14 @@
     "115792089237316195423570985008687907853269984665640564039457584007913129639935",
     "0x888Ce07575185Fe5b148b368634b12B0813e92e7",
     1767139200
-  ]
+  ],
+  "metadata": {
+    "linkedContracts": {
+      "BlackGhostNFT": "0xcB37252Fd2450637E2406eB997465CCC152A442d"
+    },
+    "salePhase": "EARLY_BIRD",
+    "characterHolderDiscount": 10000,
+    "generalEarlyDiscount": 10000,
+    "phase2StartTime": 1767139200
+  }
 }

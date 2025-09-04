@@ -1,0 +1,9 @@
+{
+  "address": "0xc3f17209b8149B21C53db9dEA79B44bBBcE571aA",
+  "deployedAt": "2025-09-02T08:21:30.192Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [],
+  "description": "Food NFT contract for the marketplace"
+}

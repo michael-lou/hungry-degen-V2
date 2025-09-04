@@ -105,6 +105,11 @@
       "address": "0x8A9f5C6B161F769B3983895bD51Aa92251472f39",
       "txHash": "0xcad64d36858c4ea835159023f56f7a087e8f4b1883ec837e29038b8803c8f726",
       "kind": "uups"
+    },
+    {
+      "address": "0xb83f65fF09FCb62813287BD4130F016914baEE16",
+      "txHash": "0x5185d31a33ea107d9696e2d46ee226684e1cc440f66a22c96f5bc2c2271abaea",
+      "kind": "uups"
     }
   ],
   "impls": {
@@ -1940,6 +1945,317 @@
               "label": "_status",
               "type": "t_uint256",
               "src": "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol:43",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69",
+              "offset": 0,
+              "slot": "0"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73",
+              "offset": 8,
+              "slot": "0"
+            }
+          ]
+        }
+      }
+    },
+    "a7edc4809119623f305abf9da371b6bacec15658285f13b8634a9d38555bcc96": {
+      "address": "0x9BBa4FeF793F2dd9e8390778e220CC54272a322A",
+      "txHash": "0xd61c75c0d81165a20ea8248886fa56837ec60faabf37b2acc5daeb704f3f0af5",
+      "layout": {
+        "solcVersion": "0.8.22",
+        "storage": [
+          {
+            "label": "blackGhostNFT",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_contract(BlackGhostNFT)10610",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:21"
+          },
+          {
+            "label": "blackGhostMetadataUri",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:32"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:36"
+          },
+          {
+            "label": "maxSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:36"
+          },
+          {
+            "label": "currentSupply",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:37"
+          },
+          {
+            "label": "treasury",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_address",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:38"
+          },
+          {
+            "label": "currentPhase",
+            "offset": 20,
+            "slot": "5",
+            "type": "t_enum(SalePhase)10637",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:42"
+          },
+          {
+            "label": "phase2StartTime",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:42"
+          },
+          {
+            "label": "EarlyBirdPurchaseLimit",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:45"
+          },
+          {
+            "label": "characterHolderDiscount",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:47"
+          },
+          {
+            "label": "generalEarlyDiscount",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:48"
+          },
+          {
+            "label": "whitelistDiscounts",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:49"
+          },
+          {
+            "label": "phase1Purchased",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:52"
+          },
+          {
+            "label": "maxPerWalletPhase2",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:54"
+          },
+          {
+            "label": "phase2PurchaseCount",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:57"
+          },
+          {
+            "label": "resetCostInDust",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:59"
+          },
+          {
+            "label": "characterNFT",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_address",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:62"
+          },
+          {
+            "label": "dustToken",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_address",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:63"
+          },
+          {
+            "label": "referralV2",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_contract(IReferralV2)12629",
+            "contract": "BlackGhostSale",
+            "src": "contracts/BlackGhostSale.sol:64"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_struct(InitializableStorage)73_storage": {
+            "label": "struct Initializable.InitializableStorage",
+            "members": [
+              {
+                "label": "_initialized",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "_initializing",
+                "type": "t_bool",
+                "offset": 8,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(OwnableStorage)13_storage": {
+            "label": "struct OwnableUpgradeable.OwnableStorage",
+            "members": [
+              {
+                "label": "_owner",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PausableStorage)804_storage": {
+            "label": "struct PausableUpgradeable.PausableStorage",
+            "members": [
+              {
+                "label": "_paused",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReentrancyGuardStorage)868_storage": {
+            "label": "struct ReentrancyGuardUpgradeable.ReentrancyGuardStorage",
+            "members": [
+              {
+                "label": "_status",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_contract(BlackGhostNFT)10610": {
+            "label": "contract BlackGhostNFT",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IReferralV2)12629": {
+            "label": "contract IReferralV2",
+            "numberOfBytes": "20"
+          },
+          "t_enum(SalePhase)10637": {
+            "label": "enum BlackGhostSale.SalePhase",
+            "members": [
+              "EARLY_BIRD",
+              "PUBLIC_SALE"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.ReentrancyGuard": [
+            {
+              "contract": "ReentrancyGuardUpgradeable",
+              "label": "_status",
+              "type": "t_uint256",
+              "src": "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol:43",
+              "offset": 0,
+              "slot": "0"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Pausable": [
+            {
+              "contract": "PausableUpgradeable",
+              "label": "_paused",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol:21",
               "offset": 0,
               "slot": "0"
             }

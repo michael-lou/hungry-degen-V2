@@ -1,0 +1,14 @@
+{
+  "address": "0xCb4F7f98B6340dabcEa1bb7B8fCC20cFd69D7099",
+  "deployedAt": "2025-09-02T08:15:05.312Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [],
+  "metadata": {
+    "blackGhostCharacterType": 6,
+    "blackGhostRarity": 1,
+    "transferRestricted": true,
+    "description": "BlackGhost NFT - Exclusive collectible with transfer restrictions"
+  }
+}
