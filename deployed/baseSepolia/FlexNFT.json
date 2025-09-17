@@ -1,0 +1,11 @@
+{
+  "address": "0xae4B63EDfC1BF138616C3F6fd92b1DC735d8b8ac",
+  "deployedAt": "2025-09-17T16:56:16.214Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [],
+  "metadata": {
+    "description": "FlexNFT - Flexible equipment NFTs for HungryDegen game"
+  }
+}

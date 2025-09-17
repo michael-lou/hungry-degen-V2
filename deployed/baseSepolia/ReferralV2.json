@@ -1,0 +1,32 @@
+{
+  "address": "0xB6cF880439897B473Ff922433410FdD3d6Ad9052",
+  "deployedAt": "2025-09-17T16:06:07.272Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "admin": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "dustToken": "0x291F52763d22079157aC446e4c8BB9a6952E8410",
+  "goldDXPToken": "0xeDeD6D4eE31E3b3788Ff2f126868A19FC500F417",
+  "silverDXPToken": "0xa33cDE9b03a6c56840119338916Ba36994Ba6C8e",
+  "vrfSystem": "0x0000000000000000000000000000000000000000",
+  "treasury": "0x888Ce07575185Fe5b148b368634b12B0813e92e7",
+  "initParams": [
+    "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+    "0x291F52763d22079157aC446e4c8BB9a6952E8410",
+    "0xeDeD6D4eE31E3b3788Ff2f126868A19FC500F417",
+    "0xa33cDE9b03a6c56840119338916Ba36994Ba6C8e",
+    "0x0000000000000000000000000000000000000000",
+    "0x888Ce07575185Fe5b148b368634b12B0813e92e7"
+  ],
+  "metadata": {
+    "description": "ReferralV2 - Multi-level referral system with DXP token rewards",
+    "productTypes": 6,
+    "systemEnabled": true,
+    "supportedTokens": [
+      "ETH",
+      "DUST",
+      "GoldDXP",
+      "SilverDXP"
+    ]
+  }
+}

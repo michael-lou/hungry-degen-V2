@@ -1,0 +1,17 @@
+{
+  "address": "0xDEe550771C28246d08427bC9C5D82Ca3C334219D",
+  "deployedAt": "2025-09-17T16:01:30.507Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [],
+  "description": "Unified user balance manager for PackMarketplace and FoodMarketplace",
+  "features": [
+    "Food box balance management",
+    "Gold pack balance management (3D mapping)",
+    "Box balance management (3D mapping)",
+    "Authorization system",
+    "Emergency migration functions",
+    "Batch operations"
+  ]
+}

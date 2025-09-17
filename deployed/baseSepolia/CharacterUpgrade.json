@@ -1,0 +1,28 @@
+{
+  "address": "0x39e3F0c74cA37104067cfB0b2aC3Aa0c9D6F48db",
+  "deployedAt": "2025-09-17T16:27:27.799Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "goldDXPToken": "0xeDeD6D4eE31E3b3788Ff2f126868A19FC500F417",
+  "silverDXPToken": "0xa33cDE9b03a6c56840119338916Ba36994Ba6C8e",
+  "characterNFT": "0x172Ed9d87b6F4Fbf125c7bd4Bff75a0dDDa8fbB5",
+  "blackGhostNFT": "0xcB37252Fd2450637E2406eB997465CCC152A442d",
+  "initParams": [
+    "0xeDeD6D4eE31E3b3788Ff2f126868A19FC500F417",
+    "0xa33cDE9b03a6c56840119338916Ba36994Ba6C8e",
+    "0x172Ed9d87b6F4Fbf125c7bd4Bff75a0dDDa8fbB5",
+    "0xcB37252Fd2450637E2406eB997465CCC152A442d"
+  ],
+  "metadata": {
+    "description": "CharacterUpgrade - Character upgrade system using Gold and Silver DXP tokens",
+    "goldDXPCost": "100 DXP per level",
+    "silverDXPCost": "50 DXP per level",
+    "maxLevel": 10,
+    "features": [
+      "Gold DXP: 批量升级 CharacterNFT",
+      "Silver DXP: 单个升级任意角色",
+      "支持 CharacterNFT 和 BlackGhostNFT"
+    ]
+  }
+}

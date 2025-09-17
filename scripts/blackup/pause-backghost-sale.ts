@@ -1,6 +1,6 @@
 import { ethers, network } from 'hardhat';
-import type { BlackGhostSale } from '../typechain-types';
-import { ContractAddressManager } from './utils/ContractAddressManager';
+import type { BlackGhostSale } from '../../typechain-types';
+import { ContractAddressManager } from '../utils/ContractAddressManager';
 
 async function main() {
   const addressManager = new ContractAddressManager();

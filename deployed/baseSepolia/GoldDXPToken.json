@@ -1,0 +1,14 @@
+{
+  "address": "0xeDeD6D4eE31E3b3788Ff2f126868A19FC500F417",
+  "deployedAt": "2025-09-17T16:05:06.046Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [],
+  "metadata": {
+    "description": "GoldDXPToken - Gold experience points token for referral rewards",
+    "name": "Gold DXP",
+    "symbol": "GDXP",
+    "decimals": 18
+  }
+}

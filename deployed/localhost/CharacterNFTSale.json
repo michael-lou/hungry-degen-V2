@@ -1,0 +1,22 @@
+{
+  "address": "0x5f3f1dBD7B74C6B46e8c44f98792A1dAf8d69154",
+  "deployedAt": "2025-09-17T11:24:41.135Z",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "characterNFT": "0x1291Be112d480055DaFd8a610b7d1e203891C274",
+  "price": "10000000000000000",
+  "treasury": "0x888Ce07575185Fe5b148b368634b12B0813e92e7",
+  "referralV2": "0x809d550fca64d94Bd9F66E60752A544199cfAC3D",
+  "initParams": [
+    "0x1291Be112d480055DaFd8a610b7d1e203891C274",
+    "10000000000000000",
+    "0x888Ce07575185Fe5b148b368634b12B0813e92e7",
+    "0x809d550fca64d94Bd9F66E60752A544199cfAC3D"
+  ],
+  "metadata": {
+    "description": "CharacterNFTSale - Character NFT sales contract",
+    "initialTokensForSale": 10,
+    "saleActive": true
+  }
+}

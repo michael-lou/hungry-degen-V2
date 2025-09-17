@@ -1,0 +1,18 @@
+{
+  "address": "0x998abeb3E57409262aE5b751f60747921B33613E",
+  "deployedAt": "2025-09-17T11:22:25.109Z",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "deploymentMode": "standard",
+  "contractType": "ERC20",
+  "genesisHolder": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "initParams": [
+    "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  ],
+  "metadata": {
+    "name": "Hungry Degen Token",
+    "symbol": "DUST",
+    "decimals": 18,
+    "totalSupply": "100000000000000000000000000000",
+    "description": "DUST Token - The primary utility token for HungryDegen ecosystem"
+  }
+}

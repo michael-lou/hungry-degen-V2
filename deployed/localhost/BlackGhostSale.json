@@ -1,15 +1,15 @@
 {
-  "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
-  "deployedAt": "2025-09-02T04:07:26.039Z",
+  "address": "0x7969c5eD335650692Bc04293B07F5BF2e7A673C0",
+  "deployedAt": "2025-09-17T11:25:48.708Z",
   "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
   "deploymentMode": "upgradeable",
   "proxyType": "UUPS",
   "initParams": [
-    "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+    "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1",
     "https://storage.googleapis.com/hungrydegens/metadata/basic_ghost_1.json",
     "3000000000000000",
     "115792089237316195423570985008687907853269984665640564039457584007913129639935",
-    "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "0x888Ce07575185Fe5b148b368634b12B0813e92e7",
     1767139200
   ]
 }

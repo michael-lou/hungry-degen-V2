@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "./BaseMarketplaceNoVRF.sol";
 import "./interfaces/IFoodNFT.sol";
 import "./interfaces/IReferralV2.sol";
+import "./interfaces/IUserBalanceManager.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
 
@@ -16,6 +17,7 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
     
     IFoodNFT public foodNFT;
     IReferralV2 public referralV2;
+    IUserBalanceManager public balanceManager;
     address public payoutAddress; // 用于支付的地址
     uint256 public foodHDPrice;
 
@@ -23,9 +25,6 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
     address public relayerAddress;                    // 授权的relayer地址
     mapping(address => uint256) public nonces;        // 用户nonce映射
     mapping(bytes32 => bool) public usedSignatures;  // 已使用的签名哈希
-
-    // 用户食物盒子余额 user -> amount
-    mapping(address => uint256) public userFoodBalance;
 
     // 用户最后打开的食物信息
     struct FoodInfo {
@@ -64,11 +63,13 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
 
     function initialize(
         address _foodNFT,
-        address payable _treasury
+        address payable _treasury,
+        address _balanceManager
     ) public initializer {
         __BaseMarketplaceNoVRF_init(_treasury);
         __EIP712_init("FoodMarketplace", "1");
         foodNFT = IFoodNFT(_foodNFT);
+        balanceManager = IUserBalanceManager(_balanceManager);
     }
 
     function updatePrice(uint256 price) external onlyOwner {
@@ -145,21 +146,21 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
         }
 
         // 增加用户食物盒子余额
-        userFoodBalance[msg.sender] += amount;
+        balanceManager.increaseFoodBoxBalance(msg.sender, amount);
 
         emit FoodPurchased(msg.sender, amount);
     }
 
     function openFood(uint256 amount) external nonReentrant {
         require(amount > 0, "FoodMarketplace: Amount must be greater than 0");
-        require(userFoodBalance[msg.sender] >= amount, "FoodMarketplace: Insufficient food balance");
+        require(balanceManager.getFoodBoxBalance(msg.sender) >= amount, "FoodMarketplace: Insufficient food balance");
         require(tokenSequence.length > 0, "FoodMarketplace: Token sequence not set");
 
         // 验证序列中的所有token ID都已初始化
         _validateTokenSequence();
 
         // 扣除用户食物盒子余额
-        userFoodBalance[msg.sender] -= amount;
+        balanceManager.decreaseFoodBoxBalance(msg.sender, amount);
 
         // 清除用户上次打开的食物记录
         delete userLastOpenedFood[msg.sender];
@@ -279,7 +280,7 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
         require(user != address(0), "FoodMarketplace: Invalid user address");
         require(amount > 0, "FoodMarketplace: Amount must be greater than 0");
         
-        userFoodBalance[user] += amount;
+        balanceManager.increaseFoodBoxBalance(user, amount);
         
         emit FoodBalanceAdded(user, amount);
     }
@@ -360,7 +361,7 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
 
     // 获取用户食物盒子余额
     function getUserFoodBalance(address user) external view returns (uint256) {
-        return userFoodBalance[user];
+        return balanceManager.getFoodBoxBalance(user);
     }
 
     // 获取用户最后打开的食物
@@ -415,6 +416,16 @@ contract FoodMarketplace is BaseMarketplaceNoVRF, EIP712Upgradeable {
                 mintData.deadline
             )
         );
+    }
+
+    // ======== 管理函数 ========
+    
+    /**
+     * @dev 设置UserBalanceManager合约地址
+     */
+    function setBalanceManager(address _balanceManager) external onlyOwner {
+        require(_balanceManager != address(0), "FoodMarketplace: Invalid balance manager address");
+        balanceManager = IUserBalanceManager(_balanceManager);
     }
 
     // 接收ETH的函数，用于运营充值回收资金池

@@ -1,6 +1,6 @@
 import { ethers, network } from 'hardhat';
-import { foodMetadata } from './metadata/foodMetadata';
-import { ContractAddressManager } from './utils/ContractAddressManager';
+import { foodMetadata } from '../metadata/foodMetadata';
+import { ContractAddressManager } from '../utils/ContractAddressManager';
 
 /**
  * 重新初始化失败的FoodNFT token

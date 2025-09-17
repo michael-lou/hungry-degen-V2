@@ -1,24 +1,12 @@
 {
   "address": "0xb83f65fF09FCb62813287BD4130F016914baEE16",
-  "deployedAt": "2025-09-04T07:01:46.933Z",
+  "deployedAt": "2025-09-17T17:08:53.068Z",
   "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
   "deploymentMode": "upgradeable",
   "proxyType": "UUPS",
-  "initParams": [
-    "0xcB37252Fd2450637E2406eB997465CCC152A442d",
-    "https://storage.googleapis.com/hungrydegens/metadata/basic_ghost_1.json",
-    "3000000000000000",
-    "115792089237316195423570985008687907853269984665640564039457584007913129639935",
-    "0x888Ce07575185Fe5b148b368634b12B0813e92e7",
-    1767139200
-  ],
-  "metadata": {
-    "linkedContracts": {
-      "BlackGhostNFT": "0xcB37252Fd2450637E2406eB997465CCC152A442d"
-    },
-    "salePhase": "EARLY_BIRD",
-    "characterHolderDiscount": 10000,
-    "generalEarlyDiscount": 10000,
-    "phase2StartTime": 1767139200
-  }
+  "config": {
+    "referralV2Address": "0xB6cF880439897B473Ff922433410FdD3d6Ad9052",
+    "referralV2ConfiguredAt": "2025-09-17T17:08:53.067Z"
+  },
+  "description": "BlackGhostSale contract with ReferralV2 integration configured"
 }

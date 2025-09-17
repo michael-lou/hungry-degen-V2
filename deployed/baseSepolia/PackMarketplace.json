@@ -1,0 +1,20 @@
+{
+  "address": "0xC7e1c05b4948cdd9CC3ba1178840bE95510e15eB",
+  "deployedAt": "2025-09-17T16:56:42.093Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [
+    "0xB220B57bD815Cc0F27110ebb71978E45191bAD7d",
+    "0xae4B63EDfC1BF138616C3F6fd92b1DC735d8b8ac",
+    "0xb75d7d5792bF8516F0e8Bf88FaCd4BB98BB2d806",
+    "0xB6cF880439897B473Ff922433410FdD3d6Ad9052",
+    "0xDEe550771C28246d08427bC9C5D82Ca3C334219D",
+    "0x888Ce07575185Fe5b148b368634b12B0813e92e7"
+  ],
+  "metadata": {
+    "description": "PackMarketplace - Marketplace for pack NFTs with CoreNFT and FlexNFT support and UserBalanceManager integration",
+    "usesDefaultPricing": true,
+    "usesUserBalanceManager": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "address": "0xa33cDE9b03a6c56840119338916Ba36994Ba6C8e",
+  "deployedAt": "2025-09-17T16:05:15.831Z",
+  "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
+  "deploymentMode": "upgradeable",
+  "proxyType": "UUPS",
+  "initParams": [],
+  "metadata": {
+    "description": "SilverDXPToken - Silver experience points token for referral rewards",
+    "name": "Silver DXP",
+    "symbol": "SDXP",
+    "decimals": 18
+  }
+}

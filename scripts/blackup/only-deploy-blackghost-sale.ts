@@ -1,5 +1,5 @@
 import { ethers, network, upgrades } from 'hardhat';
-import { ContractAddressManager } from './utils/ContractAddressManager';
+import { ContractAddressManager } from '../utils/ContractAddressManager';
 
 async function main() {
   const addressManager = new ContractAddressManager();
