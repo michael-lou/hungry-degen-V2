@@ -20,12 +20,19 @@ contract CharacterNFTStaking is
     UUPSUpgradeable,
     IERC721Receiver 
 {
+    // ---------------------------------------------------------------------
+    // EXP SCALING
+    // ---------------------------------------------------------------------
+    // expPerBlock and all calculated EXP values are now interpreted as scaled:
+    // stored = humanValue * EXP_SCALER
+    // Front-end should divide displayed numbers by EXP_SCALER if human readable values are needed.
+    uint256 public constant EXP_SCALER = 1_000_000_000_000; // 1e12
     // NFT类型枚举
     enum NFTType { CHARACTER, BLACKGHOST }
 
     // 质押配置
     struct StakingConfig {
-        uint256 expPerBlock;    // 每个区块每个NFT的EXP奖励
+        uint256 expPerBlock;    // 每个区块每个NFT的EXP奖励 (scaled = human * EXP_SCALER)
         uint256 endBlock;       // 结束区块
         bool active;            // 池子是否激活
     }
@@ -606,6 +613,21 @@ contract CharacterNFTStaking is
         for (uint256 i = 0; i < tokens.length; i++) {
             totalPending += _calculatePendingExp(tokens[i]);
         }
+    }
+
+    /// @notice 获取用户待领取经验（未缩放人类值）
+    function getUserPendingExpHuman(address user) external view returns (uint256 totalPendingHuman) {
+        uint256[] memory tokens = userStakedTokens[user];
+        uint256 totalScaled;
+        for (uint256 i = 0; i < tokens.length; i++) {
+            totalScaled += _calculatePendingExp(tokens[i]);
+        }
+        totalPendingHuman = totalScaled / EXP_SCALER;
+    }
+
+    /// @notice 返回当前每块每 NFT 的经验（人类值）
+    function expPerBlockHuman() external view returns (uint256) {
+        return stakingConfig.expPerBlock / EXP_SCALER;
     }
 
     // 查询函数 - 合约统计信息

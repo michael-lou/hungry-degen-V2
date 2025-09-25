@@ -17,6 +17,13 @@ import "./tokens/SilverDXPToken.sol";
  * - Silver DXP: 单个升级，支持任意角色（CharacterNFT 或 BlackGhostNFT）
  */
 contract CharacterUpgrade is Initializable, OwnableUpgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable {
+    // ---------------------------------------------------------------------
+    // EXP SCALING
+    // ---------------------------------------------------------------------
+    // NOTE: All exp values (currentExp, newExp, expPerLevel) are treated as scaled values:
+    // stored = human * EXP_SCALER. When adjusting expPerLevel or computing newExp
+    // off-chain scripts should multiply human values by EXP_SCALER before passing them.
+    uint256 public constant EXP_SCALER = 1_000_000_000_000; // 1e12
     
     // 合约地址
     GoldDXPToken public goldDXPToken;
@@ -89,11 +96,12 @@ contract CharacterUpgrade is Initializable, OwnableUpgradeable, UUPSUpgradeable,
         blackGhostNFT = BlackGhostNFT(_blackGhostNFT);
         
         // 设置默认升级配置
+    // 默认每级人类经验 1000 （已手动 scaled = 1000 * EXP_SCALER）
         upgradeConfig = UpgradeConfig({
             goldDXPCost: 100 * 10**18,    // 100 Gold DXP
             silverDXPCost: 50 * 10**18,   // 50 Silver DXP
             maxLevel: 10,                 // 最大等级 10
-            expPerLevel: 1000             // 每级 1000 经验值
+            expPerLevel: 1000 * EXP_SCALER // 每级 1000 (scaled)
         });
     }
 
@@ -107,14 +115,20 @@ contract CharacterUpgrade is Initializable, OwnableUpgradeable, UUPSUpgradeable,
         uint256 _expPerLevel
     ) external onlyOwner {
         require(_maxLevel > 0 && _maxLevel <= 20, "CharacterUpgrade: Invalid max level");
-        require(_expPerLevel > 0, "CharacterUpgrade: Invalid exp per level");
+    require(_expPerLevel > 0, "CharacterUpgrade: Invalid exp per level");
         
         upgradeConfig.goldDXPCost = _goldDXPCost;
         upgradeConfig.silverDXPCost = _silverDXPCost;
         upgradeConfig.maxLevel = _maxLevel;
+        // 现在 _expPerLevel 直接被视为 scaled 值 (human * EXP_SCALER) 由调用者预先处理
         upgradeConfig.expPerLevel = _expPerLevel;
         
         emit UpgradeConfigUpdated(_goldDXPCost, _silverDXPCost, _maxLevel, _expPerLevel);
+    }
+
+    /// @notice 获取 expPerLevel 的人类值（未缩放）
+    function expPerLevelHuman() external view returns (uint256) {
+        return upgradeConfig.expPerLevel / EXP_SCALER;
     }
 
     /**
@@ -152,7 +166,7 @@ contract CharacterUpgrade is Initializable, OwnableUpgradeable, UUPSUpgradeable,
             // 检查是否可以升级
             if (currentLevel < upgradeConfig.maxLevel) {
                 uint8 newLevel = currentLevel + 1;
-                uint256 newExp = currentExp + upgradeConfig.expPerLevel;
+                uint256 newExp = currentExp + upgradeConfig.expPerLevel; // both scaled
                 
                 // 更新角色属性
                 characterNFT.updateLevelAndExp(tokenId, newLevel, newExp);
@@ -218,7 +232,7 @@ contract CharacterUpgrade is Initializable, OwnableUpgradeable, UUPSUpgradeable,
         require(currentLevel < upgradeConfig.maxLevel, "CharacterUpgrade: Already at max level");
         
         uint8 newLevel = currentLevel + 1;
-        uint256 newExp = currentExp + upgradeConfig.expPerLevel;
+    uint256 newExp = currentExp + upgradeConfig.expPerLevel; // scaled
         
         // 更新角色属性
         if (nftContract == address(characterNFT)) {

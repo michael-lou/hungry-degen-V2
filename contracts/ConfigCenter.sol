@@ -7,6 +7,16 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 contract ConfigCenter is Initializable, OwnableUpgradeable, UUPSUpgradeable {
 
+    // ---------------------------------------------------------------------
+    // EXP SCALING
+    // ---------------------------------------------------------------------
+    // All experience related numbers (expRequiredForLevel, character exp values,
+    // staking expPerBlock, upgrade exp increments) are interpreted as:
+    //   storedValue = humanReadableValue * EXP_SCALER
+    // Front-end / off-chain code that wants the human readable value should divide by EXP_SCALER.
+    // We keep original variable names for minimal intrusive change.
+    uint256 public constant EXP_SCALER = 1_000_000_000_000; // 1e12
+
     uint256 public TOTAL_REWARD_PER_BLOCK; // 奖励计算参数
 
     mapping(uint8 => mapping(uint8 => uint256)) public characterBaseWeight; // 稀有度基础权重 level => rarity => weight
@@ -157,16 +167,17 @@ contract ConfigCenter is Initializable, OwnableUpgradeable, UUPSUpgradeable {
         rarityReduction = 1;
         levelReduction = 1;
 
-        // 角色等级所需经验 1～10级
-        expRequiredForLevel[1] = 10 * 10000; //1～2级
-        expRequiredForLevel[2] = 20 * 10000; //2～3级
-        expRequiredForLevel[3] = 40 * 10000; //3～4级
-        expRequiredForLevel[4] = 65 * 10000; //4～5级
-        expRequiredForLevel[5] = 100 * 10000; //5～6级
-        expRequiredForLevel[6] = 175 * 10000; //6～7级
-        expRequiredForLevel[7] = 250 * 10000; //7～8级
-        expRequiredForLevel[8] = 350 * 10000; //8～9级
-        expRequiredForLevel[9] = 500 * 10000; //9～10级
+    // 角色等级所需经验 (Scaled). Human thresholds: 10,20,40,65,100,175,250,350,500
+    // Stored as base * EXP_SCALER (replaces the previous *10000 pseudo-scaling)
+    expRequiredForLevel[1] = 10 * EXP_SCALER; //1～2级
+    expRequiredForLevel[2] = 20 * EXP_SCALER; //2～3级
+    expRequiredForLevel[3] = 40 * EXP_SCALER; //3～4级
+    expRequiredForLevel[4] = 65 * EXP_SCALER; //4～5级
+    expRequiredForLevel[5] = 100 * EXP_SCALER; //5～6级
+    expRequiredForLevel[6] = 175 * EXP_SCALER; //6～7级
+    expRequiredForLevel[7] = 250 * EXP_SCALER; //7～8级
+    expRequiredForLevel[8] = 350 * EXP_SCALER; //8～9级
+    expRequiredForLevel[9] = 500 * EXP_SCALER; //9～10级
 
         // 角色类型权重系数 (1000 = 100%)
         characterTypeMultiplier[1] = 1000; // Airdrop Andy

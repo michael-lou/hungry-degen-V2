@@ -1,5 +1,6 @@
 import { ethers, network, upgrades } from 'hardhat';
 import { ContractAddressManager } from './utils/ContractAddressManager';
+import { EXP_SCALER, fromScaled, toScaled } from './utils/expScaler';
 
 // 添加延迟函数，在测试网部署时避免交易冲突
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -48,12 +49,14 @@ async function main() {
       return;
     }
 
-    // CharacterNFTStaking 配置参数
+    // CharacterNFTStaking 配置参数（expPerBlock 现为 scaled 值 = human * EXP_SCALER）
+    // 可根据需要调整为更小粒度，例如 '0.0000000031'
+    const humanExpPerBlock = '0.0000000031'; // 人类可读每块经验
     const stakingConfig = {
       characterNFT: characterNFTAddress,
       blackGhostNFT: blackGhostNFTAddress,
       configCenter: configCenterAddress,
-      expPerBlock: ethers.parseEther('10'), // 每区块10 EXP (以 wei 为单位)
+      expPerBlock: toScaled(humanExpPerBlock), // scaled
       endBlock: (await ethers.provider.getBlockNumber()) + (30 * 24 * 60 * 60 / 2), // 30天后结束 (假设2秒一个区块)
     };
 
@@ -61,7 +64,7 @@ async function main() {
     console.log(`CharacterNFT: ${stakingConfig.characterNFT}`);
     console.log(`BlackGhostNFT: ${stakingConfig.blackGhostNFT}`);
     console.log(`ConfigCenter: ${stakingConfig.configCenter}`);
-    console.log(`每区块经验奖励: ${ethers.formatEther(stakingConfig.expPerBlock)} EXP`);
+  console.log(`每区块经验奖励(缩放存储): ${stakingConfig.expPerBlock.toString()} (human ≈ ${humanExpPerBlock})`);
     console.log(`结束区块: ${stakingConfig.endBlock}`);
 
     // 部署 CharacterNFTStaking
@@ -73,7 +76,7 @@ async function main() {
         stakingConfig.characterNFT,
         stakingConfig.blackGhostNFT,
         stakingConfig.configCenter,
-        stakingConfig.expPerBlock,
+  stakingConfig.expPerBlock,
         stakingConfig.endBlock,
       ],
       {
@@ -135,11 +138,11 @@ async function main() {
       const totalStakedTokens = await characterNFTStaking.totalStakedTokens();
       const totalExpRewarded = await characterNFTStaking.totalExpRewarded();
       
-      console.log(`每区块经验奖励: ${ethers.formatEther(stakingConfigData[0])} EXP`);
+  console.log(`每区块经验奖励(缩放存储): ${stakingConfigData[0].toString()} (human ≈ ${fromScaled(stakingConfigData[0])})`);
       console.log(`结束区块: ${stakingConfigData[1].toString()}`);
       console.log(`池子状态: ${stakingConfigData[2] ? '激活' : '未激活'}`);
       console.log(`总质押代币数: ${totalStakedTokens.toString()}`);
-      console.log(`总奖励经验: ${ethers.formatEther(totalExpRewarded)} EXP`);
+  console.log(`总奖励经验(缩放存储): ${totalExpRewarded.toString()} (human ≈ ${fromScaled(totalExpRewarded)} )`);
     } catch (error) {
       console.error('验证配置时出错:', error);
     }
@@ -152,19 +155,21 @@ async function main() {
       characterNFT: stakingConfig.characterNFT,
       blackGhostNFT: stakingConfig.blackGhostNFT,
       configCenter: stakingConfig.configCenter,
-      expPerBlock: stakingConfig.expPerBlock.toString(),
+  expPerBlock: stakingConfig.expPerBlock.toString(), // scaled
       endBlock: stakingConfig.endBlock.toString(),
       initParams: [
         stakingConfig.characterNFT,
         stakingConfig.blackGhostNFT,
         stakingConfig.configCenter,
-        stakingConfig.expPerBlock.toString(),
+  stakingConfig.expPerBlock.toString(),
         stakingConfig.endBlock.toString(),
       ],
       metadata: {
         description: 'CharacterNFTStaking - Staking contract for Character and BlackGhost NFTs',
         stakingDuration: '30 days',
-        expPerBlock: ethers.formatEther(stakingConfig.expPerBlock) + ' EXP',
+  expPerBlock: `${fromScaled(stakingConfig.expPerBlock)} EXP (human)`,
+  expPerBlockScaled: stakingConfig.expPerBlock.toString(),
+  expPerBlockScaler: EXP_SCALER.toString(),
       },
       deployedAt: new Date().toISOString(),
     });
@@ -179,7 +184,7 @@ async function main() {
     console.log(`关联 CharacterNFT: ${stakingConfig.characterNFT}`);
     console.log(`关联 BlackGhostNFT: ${stakingConfig.blackGhostNFT}`);
     console.log(`关联 ConfigCenter: ${stakingConfig.configCenter}`);
-    console.log(`每区块奖励: ${ethers.formatEther(stakingConfig.expPerBlock)} EXP`);
+  console.log(`每区块奖励(缩放存储): ${stakingConfig.expPerBlock.toString()} (human ≈ ${fromScaled(stakingConfig.expPerBlock)} )`);
 
   } catch (error) {
     console.error('\n❌ 部署过程中发生错误:', error);

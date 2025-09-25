@@ -1,24 +1,26 @@
 {
-  "address": "0x533732984077fC43FF64B42f8e77a6Ba1703ae6d",
-  "deployedAt": "2025-09-17T16:39:23.984Z",
+  "address": "0x4468B708BEBdC1186bF97b831C81b7e8B2f070d7",
+  "deployedAt": "2025-09-25T15:40:54.331Z",
   "deployer": "0xcb1E6071A3E2ED9c3e35BE1eC4F0CFf3aA84480B",
   "deploymentMode": "upgradeable",
   "proxyType": "UUPS",
   "characterNFT": "0x172Ed9d87b6F4Fbf125c7bd4Bff75a0dDDa8fbB5",
   "blackGhostNFT": "0xcB37252Fd2450637E2406eB997465CCC152A442d",
-  "configCenter": "0xC22aE004b102D500Da63c3a29105978C4Ee2Ec62",
-  "expPerBlock": "10000000000000000000",
-  "endBlock": "32475428",
+  "configCenter": "0xf0Fe4DF802BA7C4Abd69123c9E12e5870A757FAa",
+  "expPerBlock": "3100",
+  "endBlock": "32819268",
   "initParams": [
     "0x172Ed9d87b6F4Fbf125c7bd4Bff75a0dDDa8fbB5",
     "0xcB37252Fd2450637E2406eB997465CCC152A442d",
-    "0xC22aE004b102D500Da63c3a29105978C4Ee2Ec62",
-    "10000000000000000000",
-    "32475428"
+    "0xf0Fe4DF802BA7C4Abd69123c9E12e5870A757FAa",
+    "3100",
+    "32819268"
   ],
   "metadata": {
     "description": "CharacterNFTStaking - Staking contract for Character and BlackGhost NFTs",
     "stakingDuration": "30 days",
-    "expPerBlock": "10.0 EXP"
+    "expPerBlock": "0.0000000031 EXP (human)",
+    "expPerBlockScaled": "3100",
+    "expPerBlockScaler": "1000000000000"
   }
 }
